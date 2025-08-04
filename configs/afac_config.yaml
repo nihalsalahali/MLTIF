@@ -1,0 +1,32 @@
+# FLARE Adaptive Flag Attack Classifier (AFAC) Configuration
+
+ensemble:
+  base_classifiers:
+    - KNN
+    - DecisionTree
+    - RandomForest
+    - SVM
+    - XGBoost
+  meta_learner:
+    type: NeuralNetwork
+    layers:
+      - 64
+      - 32
+    activation: relu
+    optimizer: adam
+
+training:
+  dataset: datasets/CICIoMT2024.csv
+  epochs: 50
+  batch_size: 32
+  validation_split: 0.2
+
+retraining:
+  enabled: true
+  interval_seconds: 86400  # 1 day
+
+thresholds:
+  min_confidence: 0.85
+
+logging:
+  level: INFO

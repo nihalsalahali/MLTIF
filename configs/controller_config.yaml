@@ -1,0 +1,29 @@
+# FLARE LSMA Controller Configuration
+
+controllers:
+  - id: dc1
+    name: domain_controller_1
+    ip: 127.0.0.1
+    port: 50051
+    role: "primary"
+
+  - id: dc2
+    name: domain_controller_2
+    ip: 127.0.0.2
+    port: 50052
+    role: "secondary"
+
+coordination_engine:
+  ip: 127.0.0.100
+  port: 6000
+
+secure_channels:
+  routine_pathway:
+    protocol: TLS
+    cert: certs/routine_cert.pem
+    key: certs/routine_key.pem
+
+  urgent_notification_link:
+    protocol: TLS
+    cert: certs/urgent_cert.pem
+    key: certs/urgent_key.pem

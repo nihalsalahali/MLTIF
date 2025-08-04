@@ -1,0 +1,27 @@
+# FLARE Multi-Layer Distributed Flag Mitigation (MLDFM) Default Policy
+
+mitigation:
+  actions:
+    - type: RATE_LIMIT_FLAG
+      flag: RST
+      limit: 100  # packets per second
+
+    - type: RATE_LIMIT_FLAG
+      flag: FIN
+      limit: 100
+
+    - type: DROP_FRAGMENT
+      frag_type: tiny
+
+    - type: DROP_FRAGMENT
+      frag_type: overlap
+
+    - type: STATE_FLUSH
+      criteria: suspicious_connections
+
+adaptive:
+  enabled: true
+  window_seconds: 300
+
+log:
+  level: INFO

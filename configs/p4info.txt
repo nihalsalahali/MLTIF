@@ -1,0 +1,26 @@
+tables {
+  preamble {
+    id: 33554433
+    name: "check_tcp_flags"
+    alias: ""
+    annotations: ""
+  }
+  match_fields {
+    id: 1
+    name: "hdr.tcp.flags"
+    bitwidth: 8
+    match_type: TERNARY
+  }
+  action_refs {
+    id: 16777217
+  }
+  size: 2
+  ...
+}
+actions {
+  preamble {
+    id: 16777217
+    name: "count_rst"
+  }
+  ...
+}
