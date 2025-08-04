@@ -1,0 +1,56 @@
+{
+  "description": "Example static flow rules for FLARE SFFP",
+  "pipeline": "flare_sffp",
+  "tables": [
+    {
+      "name": "MyIngress.check_tcp_flags",
+      "entries": [
+        {
+          "match": {
+            "hdr.tcp.flags": {
+              "value": "0x04",
+              "mask": "0xff"
+            }
+          },
+          "action": {
+            "type": "MyIngress.count_rst",
+            "params": {}
+          }
+        },
+        {
+          "match": {
+            "hdr.tcp.flags": {
+              "value": "0x01",
+              "mask": "0xff"
+            }
+          },
+          "action": {
+            "type": "MyIngress.count_fin",
+            "params": {}
+          }
+        }
+      ]
+    },
+    {
+      "name": "MyIngress.check_fragment",
+      "entries": [
+        {
+          "match": {
+            "hdr.ipv4.flags": {
+              "value": "0x1",
+              "mask": "0x7"
+            },
+            "hdr.ipv4.fragOffset": {
+              "value": "0x0",
+              "mask": "0x1FFF"
+            }
+          },
+          "action": {
+            "type": "MyIngress.count_frag",
+            "params": {}
+          }
+        }
+      ]
+    }
+  ]
+}
