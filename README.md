@@ -85,14 +85,14 @@ The framework is evaluated on:
 
 ## 📜 License
 
-MIT License. See `LICENSE` file.
+MIT License. 
 
 ---
 
 ## ✒️ Citation
 
-If you use this framework, please cite the original MLTIF paper.
+ MLTIF paper.
 
 ```
-TBD: Add citation from the MLTIF paper.
+
 ```
